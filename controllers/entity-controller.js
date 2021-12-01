@@ -1,9 +1,14 @@
 const Entity = require('../models/entity')
 const createPath = require('../helpers/create-path')
 
+const fs = require('fs')
+
 const handleError = (res, error) => {
+  fs.writeFile('../error.txt', error.stack, (err) => {
+    err ? console.log(err) : null
+  })
   console.log(error)
-  res.render(createPath('error'))
+  res.render(createPath('error'), { error })
 }
 
 const getEntities = (req, res) => {

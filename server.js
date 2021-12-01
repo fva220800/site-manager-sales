@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
@@ -49,5 +51,5 @@ app.use(productRouters)
 app.use(saleRouters)
 
 app.use((req, res) => {
-  res.status(404).render(createPath('error'))
+  res.status(404).render(createPath('error'), { error })
 })
