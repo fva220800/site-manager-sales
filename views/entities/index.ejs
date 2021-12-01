@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <div class="container-xxl">
+      <%- include('../partials/header.ejs') %>
+      <main>
+        <h1 class="mt-3">Юридические лица</h1>
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th scope="col">Название</th>
+              <th scope="col">ИНН</th>
+              <th scope="col">Адрес(страна, город, улица, номер дома)</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (entities.length) { %> <% entities.forEach(({id, name, number,
+            address}) => { %>
+            <tr>
+              <th><%= name %></th>
+              <th><%= number %></th>
+              <th><%= address %></th>
+              <th>
+                <a href="/entities/edit/<%= id %>" class="btn btn-primary"
+                  >Редактировать</a
+                >
+                <button class="btn btn-primary" data-id="<%= id %>">
+                  Удалить
+                </button>
+              </th>
+            </tr>
+            <% }) %> <% } %>
+          </tbody>
+        </table>
+        <a href="/entities/add" class="btn btn-primary">Добавить</a>
+      </main>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+    <script>
+      document.addEventListener('click', (event) => {
+        const id = event.target?.dataset?.id || null
+        if (id && confirm('Вы действительно хотите удалить')) {
+          fetch(`/entities/${id}`, {
+            method: 'DELETE',
+          }).then(() => {
+            window.location.reload()
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <div class="container-xxl">
+      <main>
+        <h1 class="mt-3">Добавление физическое лицо</h1>
+        <form action="/individuals/add" method="post">
+          <div class="col-xl-6 mt-3">
+            <label for="name" class="form-label">ФИО</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              maxlength="50"
+              name="name"
+            />
+            <div class="invalid-feedback">
+              Поле не заполнено или такой клиент есть или неправильная запись.
+              Запись должна быть такая (Фамилия Имя Отчество).
+            </div>
+          </div>
+          <div class="col-xl-6 mt-3">
+            <label for="name" class="form-label">Дата рожения</label>
+            <input type="date" class="form-control" id="date" name="date" />
+          </div>
+          <div class="col-xl-6 mt-3">
+            <label for="number" class="form-label">Номер паспорта</label>
+            <input
+              type="text"
+              class="form-control"
+              id="number"
+              name="number"
+              maxlength="9"
+            />
+            <div class="invalid-feedback">
+              Первые два символа должны быть буквы, а остальные цифры
+              (КВ0000000)
+            </div>
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="address" class="form-label"
+              >Адрес(страна, город, улица, номер дома)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              required
+              maxlength="50"
+              name="address"
+            />
+            <div class="invalid-feedback">
+              Неправильная запись. Запись должна быть такая (страна город улица
+              номер-дома).
+            </div>
+          </div>
+
+          <input type="hidden" class="hiddenCheck" value="" />
+
+          <% if (individuals.length) { %> <% individuals.forEach(({id, name,
+          date, number, address}) => { %>
+          <input type="hidden" class="hiddenName" value="<%= name %>" />
+          <% }) %> <% } %>
+
+          <div class="mt-3">
+            <button class="btn btn-primary button" type="button" id="btn">
+              Добавить
+            </button>
+            <button class="hidden" type="submit">Добавить</button>
+            <a href="/individuals" class="btn btn-primary">Назад</a>
+          </div>
+        </form>
+      </main>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+  </body>
+</html>

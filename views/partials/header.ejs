@@ -1,0 +1,49 @@
+<header>
+  <ul class="nav nav-pills mt-3">
+    <li class="nav-item dropdown">
+      <a
+        class="
+          nav-link
+          <%=
+          (title
+          ==
+          'Клиенты')
+          ?
+          'active'
+          :
+          ''
+          %>
+          dropdown-toggle
+        "
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false"
+        >Клиенты</a
+      >
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/entities">Юридические лица</a></li>
+        <li>
+          <a class="dropdown-item" href="/individuals">Физические лица</a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link <%= (title == 'Продукты') ? 'active' : '' %>"
+        href="/products"
+        >Продукты</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link <%= (title == 'Продажы') ? 'active' : '' %>"
+        href="/sales"
+        >Продажы</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users">Выйти</a>
+    </li>
+  </ul>
+</header>
