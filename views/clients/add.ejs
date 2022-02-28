@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <div class="container-xxl">
+      <main>
+        <h1 class="mt-3">Добавление клиента</h1>
+        <form action="/clients/add" method="post">
+          <div class="col-xl-6 mt-3">
+            <label for="firm_id" class="form-label">Фирма</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firm_id"
+              required
+              name="firm_id"
+            />
+          </div>
+          <div class="col-xl-6 mt-3">
+            <label for="surname" class="form-label">Фамилия</label>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              required
+              name="surname"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="firstname" class="form-label"
+              >Имя</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              required
+              name="firstname"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="patronymic" class="form-label"
+              >Отчество</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="patronymic"
+              required
+              name="patronymic"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="expence_id" class="form-label"
+              >Номер расхода</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="expence_id"
+              required
+              name="expence_id"
+            />
+          </div>
+
+          <div class="mt-3">
+            <button class="btn btn-primary button" type="button" id="btn">
+              Добавить
+            </button>
+            <button class="hidden" type="submit">Добавить</button>
+            <a href="/clients" class="btn btn-primary">Назад</a>
+          </div>
+        </form>
+      </main>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+  </body>
+</html>

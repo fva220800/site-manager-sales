@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <div class="container-xxl">
+      <main>
+        <h1 class="mt-3">Добавление работы</h1>
+        <form action="/completedworks/add" method="post">
+          <div class="col-xl-6 mt-3">
+            <label for="view" class="form-label">Вид</label>
+            <input
+              type="text"
+              class="form-control"
+              id="view"
+              required
+              name="view"
+            />
+          </div>
+          <div class="col-xl-6 mt-3">
+            <label for="price" class="form-label">Стоимость</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              required
+              name="price"
+            />
+          </div>
+
+          <div class="mt-3">
+            <button class="btn btn-primary button" type="button" id="btn">
+              Добавить
+            </button>
+            <button class="hidden" type="submit">Добавить</button>
+            <a href="/completedworks" class="btn btn-primary">Назад</a>
+          </div>
+        </form>
+      </main>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+  </body>
+</html>

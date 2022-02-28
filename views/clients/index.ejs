@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <div class="container-xxl">
+      <%- include('../partials/header.ejs') %>
+      <main>
+        <h1 class="mt-3">Клиенты</h1>
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th scope="col">Фирма</th>
+              <th scope="col">Фамилия</th>
+              <th scope="col">Имя</th>
+              <th scope="col">Отчество</th>
+              <th scope="col">Номер расхода</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (clients.length) { %> <% clients.forEach(({id, firm_id,
+            surname, firstname, patronymic, expence_id}) => { %>
+            <tr>
+              <th><%= firm_id %></th>
+              <th><%= surname %></th>
+              <th><%= firstname %></th>
+              <th><%= patronymic %></th>
+              <th><%= expence_id %></th>
+              <th>
+                <a href="/clients/edit/<%= id %>" class="btn btn-primary"
+                  >Редактировать</a
+                >
+                <button class="btn btn-primary" data-id="<%= id %>">
+                  Удалить
+                </button>
+              </th>
+            </tr>
+            <% }) %> <% } %>
+          </tbody>
+        </table>
+        <a href="/clients/add" class="btn btn-primary">Добавить</a>
+      </main>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+    <script>
+      document.addEventListener('click', (event) => {
+        const id = event.target?.dataset?.id || null
+        if (id && conclient('Вы действительно хотите удалить')) {
+          fetch(`/clients/${id}`, {
+            method: 'DELETE',
+          }).then(() => {
+            window.location.reload()
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

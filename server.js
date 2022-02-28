@@ -7,10 +7,11 @@ const methodOverride = require('method-override')
 const createPath = require('./helpers/create-path')
 
 const userRouters = require('./routers/user-routers')
-const entityRouters = require('./routers/entity-routers')
-const individualRouters = require('./routers/individual-routers')
-const productRouters = require('./routers/product-routers')
-const saleRouters = require('./routers/sale-routers')
+const firmRouters = require('./routers/firm-routers')
+const clientRouters = require('./routers/client-routers')
+const completedworkRouters = require('./routers/completedwork-routers')
+const expenceRouters = require('./routers/expence-routers')
+const staffRouters = require('./routers/staff-routers')
 
 const app = express()
 
@@ -45,10 +46,11 @@ app.get('/', (req, res) => {
 })
 
 app.use(userRouters)
-app.use(entityRouters)
-app.use(individualRouters)
-app.use(productRouters)
-app.use(saleRouters)
+app.use(firmRouters)
+app.use(clientRouters)
+app.use(completedworkRouters)
+app.use(expenceRouters)
+app.use(staffRouters)
 
 app.use((req, res) => {
   res.status(404).render(createPath('error'), { error })

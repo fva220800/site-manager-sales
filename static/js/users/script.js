@@ -15,7 +15,7 @@ btn.addEventListener('click', () => {
       hiddenPassword[i].value == password.value
     ) {
       flag = true
-      window.location.href = '/entities'
+      window.location.href = '/firms'
     }
   }
 

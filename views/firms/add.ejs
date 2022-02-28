@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <div class="container-xxl">
+      <main>
+        <h1 class="mt-3">Добавление фирмы</h1>
+        <form action="/firms/add" method="post">
+          <div class="col-xl-6 mt-3">
+            <label for="name" class="form-label">Название</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              name="name"
+            />
+          </div>
+          <div class="col-xl-6 mt-3">
+            <label for="time" class="form-label">Время</label>
+            <input
+              type="text"
+              class="form-control"
+              id="time"
+              required
+              name="time"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="address" class="form-label"
+              >Адрес(страна, город, улица, номер дома)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              required
+              name="address"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="surname" class="form-label"
+              >Фамилия начальника</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              required
+              name="surname"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="firstname" class="form-label"
+              >Имя начальника</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              required
+              name="firstname"
+            />
+          </div>
+
+          <div class="col-xl-6 mt-3">
+            <label for="patronymic" class="form-label"
+              >Отчество начальника</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="patronymic"
+              required
+              name="patronymic"
+            />
+          </div>
+
+          <input type="hidden" class="hiddenCheck" value="" />
+
+          <div class="mt-3">
+            <button class="btn btn-primary button" type="button" id="btn">
+              Добавить
+            </button>
+            <button class="hidden" type="submit">Добавить</button>
+            <a href="/firms" class="btn btn-primary">Назад</a>
+          </div>
+        </form>
+      </main>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+  </body>
+</html>
