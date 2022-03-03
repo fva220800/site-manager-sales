@@ -6,6 +6,29 @@
       <%- include('../partials/header.ejs') %>
       <main>
         <h1 class="mt-3">Выполненные работы</h1>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Поиск</label>
+          <input type="text" class="form-control searchInput" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="radios">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+            <label class="form-check-label" for="flexRadioDefault1">
+              По виду
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              По стоимости
+            </label>
+          </div>
+        </div>
+        <div class="btn-search">
+          <button class="btn btn-primary btn-search">Найти</button>
+        </div>
+
         <table class="table mt-3">
           <thead>
             <tr>
@@ -30,7 +53,42 @@
             </tr>
             <% }) %> <% } %>
           </tbody>
+          <tfoot class="hidden">
+            <tr>
+              <th>Нету</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
         </table>
+        <p class="form-label">Фильтр</p>
+        <div class="radios">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault7" checked>
+            <label class="form-check-label" for="flexRadioDefault7">
+              По виду
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault8">
+            <label class="form-check-label" for="flexRadioDefault8">
+              По стоимости
+            </label>
+          </div>
+        </div>
+        
+        <select class="form-select" aria-label="Default select example">
+          <option value="1" selected>По возрастанию</option>
+          <option value="2">По убыванию</option>
+        </select>
+
+        <div class="btn-filter">
+          <button class="btn btn-primary">Фильтровать</button>
+        </div>
         <a href="/completedworks/add" class="btn btn-primary">Добавить</a>
       </main>
     </div>
@@ -44,6 +102,76 @@
           }).then(() => {
             window.location.reload()
           })
+        }
+      })
+    </script>
+    <script>
+      document.querySelector('.btn-search .btn').addEventListener('click', () => {
+        let text = document.querySelector('.searchInput').value;
+        let radios1 = [
+          document.querySelectorAll('.form-check-input')[0],
+          document.querySelectorAll('.form-check-input')[1]
+        ];
+        let radioNumber;
+        let key = 0;
+        let count = 0;
+
+        radios1.forEach((item, key) => {
+          if (item.checked == true) {
+            radioNumber = key;
+          }
+          key++;
+        })
+
+        for (let i = 0; i < document.querySelector('tbody').rows.length; i++) {
+          document.querySelector('tbody').rows[i].classList.remove('hidden');
+          document.querySelector('tfoot').classList.add('hidden')
+          
+          if (text == '') {
+            document.querySelector('tbody').rows[i].classList.remove('hidden');
+          } else {
+            if (!document.querySelector('tbody').rows[i].cells[radioNumber].textContent.includes(text)) {
+              document.querySelector('tbody').rows[i].classList.add('hidden');
+              count++;
+            }
+          }
+        }
+
+        if (document.querySelector('tbody').rows.length == count) {
+          document.querySelector('tfoot').classList.remove('hidden')
+        }
+      })
+
+      document.querySelector('.btn-filter .btn').addEventListener('click', () => {
+        let radios1 = [
+          document.querySelectorAll('.form-check-input')[2],
+          document.querySelectorAll('.form-check-input')[3]
+        ];
+
+        let radioNumber;
+        let key = 0;
+        let names = [];
+        let elements = [];
+
+        radios1.forEach((item, key) => {
+          if (item.checked == true) {
+            radioNumber = key;
+          }
+          key++;
+        })
+
+        let setting1 = document.querySelector('.form-select').value;
+
+        if (setting1 == 1) {
+          let sortedRows = Array.from(document.querySelector('tbody').rows)
+            .sort((rowA, rowB) => rowA.cells[radioNumber].innerHTML > rowB.cells[radioNumber].innerHTML ? 1 : -1);
+
+          document.querySelector('tbody').append(...sortedRows);
+        } else {
+          let sortedRows = Array.from(document.querySelector('tbody').rows)
+            .sort((rowA, rowB) => rowA.cells[radioNumber].innerHTML < rowB.cells[radioNumber].innerHTML ? 1 : -1);
+
+          document.querySelector('tbody').append(...sortedRows);
         }
       })
     </script>

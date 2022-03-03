@@ -6,6 +6,69 @@
       <%- include('../partials/header.ejs') %>
       <main>
         <h1 class="mt-3">Сотрудники</h1>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Поиск</label>
+          <input type="text" class="form-control searchInput" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="radios">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+            <label class="form-check-label" for="flexRadioDefault1">
+              По фирме
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              По фамилии
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+            <label class="form-check-label" for="flexRadioDefault3">
+              По имени
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+            <label class="form-check-label" for="flexRadioDefault4">
+              По отчеству
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+            <label class="form-check-label" for="flexRadioDefault5">
+              По должности
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+            <label class="form-check-label" for="flexRadioDefault6">
+              По виду работы
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault13">
+            <label class="form-check-label" for="flexRadioDefault13">
+              По зарплате
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault14">
+            <label class="form-check-label" for="flexRadioDefault14">
+              По адресу
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault15">
+            <label class="form-check-label" for="flexRadioDefault15">
+              По телефону
+            </label>
+          </div>
+        </div>
+        <div class="btn-search">
+          <button class="btn btn-primary btn-search">Найти</button>
+        </div>
         <table class="table mt-3">
           <thead>
             <tr>
@@ -23,12 +86,13 @@
           </thead>
           <tbody>
             <% if (staffs.length) { %> <% staffs.forEach(({id, firm_id,
-            surname, firstname, patronymic, work_id, earn, address, phone}) => { %>
+            surname, firstname, patronymic, position, work_id, earn, address, phone}) => { %>
             <tr>
               <th><%= firm_id %></th>
               <th><%= surname %></th>
               <th><%= firstname %></th>
               <th><%= patronymic %></th>
+              <th><%= position %></th>
               <th><%= work_id %></th>
               <th><%= earn %></th>
               <th><%= address %></th>
@@ -44,7 +108,84 @@
             </tr>
             <% }) %> <% } %>
           </tbody>
+          <tfoot class="hidden">
+            <tr>
+              <th>Нету</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
         </table>
+        <p class="form-label">Фильтр</p>
+        <div class="radios">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault7" checked>
+            <label class="form-check-label" for="flexRadioDefault7">
+              По фирме
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault8">
+            <label class="form-check-label" for="flexRadioDefault8">
+              По фамилии
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault9">
+            <label class="form-check-label" for="flexRadioDefault9">
+              По имени
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault10">
+            <label class="form-check-label" for="flexRadioDefault10">
+              По отчеству
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault11">
+            <label class="form-check-label" for="flexRadioDefault11">
+              По должности
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault12">
+            <label class="form-check-label" for="flexRadioDefault12">
+              По виду работы
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault16">
+            <label class="form-check-label" for="flexRadioDefault16">
+              По зарплате
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault17">
+            <label class="form-check-label" for="flexRadioDefault17">
+              По адресу
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault18">
+            <label class="form-check-label" for="flexRadioDefault18">
+              По телефону
+            </label>
+          </div>
+        </div>
+        
+        <select class="form-select" aria-label="Default select example">
+          <option value="1" selected>По возрастанию</option>
+          <option value="2">По убыванию</option>
+        </select>
+
+        <div class="btn-filter">
+          <button class="btn btn-primary">Фильтровать</button>
+        </div>
         <a href="/staffs/add" class="btn btn-primary">Добавить</a>
       </main>
     </div>
@@ -58,6 +199,90 @@
           }).then(() => {
             window.location.reload()
           })
+        }
+      })
+    </script>
+    <script>
+      document.querySelector('.btn-search .btn').addEventListener('click', () => {
+        let text = document.querySelector('.searchInput').value;
+        let radios1 = [
+          document.querySelectorAll('.form-check-input')[0],
+          document.querySelectorAll('.form-check-input')[1],
+          document.querySelectorAll('.form-check-input')[2],
+          document.querySelectorAll('.form-check-input')[3],
+          document.querySelectorAll('.form-check-input')[4],
+          document.querySelectorAll('.form-check-input')[5],
+          document.querySelectorAll('.form-check-input')[6],
+          document.querySelectorAll('.form-check-input')[7],
+          document.querySelectorAll('.form-check-input')[8],
+        ];
+        let radioNumber;
+        let key = 0;
+        let count = 0;
+
+        radios1.forEach((item, key) => {
+          if (item.checked == true) {
+            radioNumber = key;
+          }
+          key++;
+        })
+
+        for (let i = 0; i < document.querySelector('tbody').rows.length; i++) {
+          document.querySelector('tbody').rows[i].classList.remove('hidden');
+          document.querySelector('tfoot').classList.add('hidden')
+          
+          if (text == '') {
+            document.querySelector('tbody').rows[i].classList.remove('hidden');
+          } else {
+            if (!document.querySelector('tbody').rows[i].cells[radioNumber].textContent.includes(text)) {
+              document.querySelector('tbody').rows[i].classList.add('hidden');
+              count++;
+            }
+          }
+        }
+
+        if (document.querySelector('tbody').rows.length == count) {
+          document.querySelector('tfoot').classList.remove('hidden')
+        }
+      })
+
+      document.querySelector('.btn-filter .btn').addEventListener('click', () => {
+        let radios1 = [
+          document.querySelectorAll('.form-check-input')[9],
+          document.querySelectorAll('.form-check-input')[10],
+          document.querySelectorAll('.form-check-input')[11],
+          document.querySelectorAll('.form-check-input')[12],
+          document.querySelectorAll('.form-check-input')[13],
+          document.querySelectorAll('.form-check-input')[14],
+          document.querySelectorAll('.form-check-input')[15],
+          document.querySelectorAll('.form-check-input')[16],
+          document.querySelectorAll('.form-check-input')[17],
+        ];
+
+        let radioNumber;
+        let key = 0;
+        let names = [];
+        let elements = [];
+
+        radios1.forEach((item, key) => {
+          if (item.checked == true) {
+            radioNumber = key;
+          }
+          key++;
+        })
+
+        let setting1 = document.querySelector('.form-select').value;
+
+        if (setting1 == 1) {
+          let sortedRows = Array.from(document.querySelector('tbody').rows)
+            .sort((rowA, rowB) => rowA.cells[radioNumber].innerHTML > rowB.cells[radioNumber].innerHTML ? 1 : -1);
+
+          document.querySelector('tbody').append(...sortedRows);
+        } else {
+          let sortedRows = Array.from(document.querySelector('tbody').rows)
+            .sort((rowA, rowB) => rowA.cells[radioNumber].innerHTML < rowB.cells[radioNumber].innerHTML ? 1 : -1);
+
+          document.querySelector('tbody').append(...sortedRows);
         }
       })
     </script>

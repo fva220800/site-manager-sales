@@ -45,6 +45,10 @@ app.get('/', (req, res) => {
   res.status(301).redirect('/users')
 })
 
+app.get('/report', (req, res) => {
+  res.render(createPath('report'));
+})
+
 app.use(userRouters)
 app.use(firmRouters)
 app.use(clientRouters)

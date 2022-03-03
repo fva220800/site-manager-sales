@@ -1,3 +1,24 @@
 .hidden {
   display: none;
 }
+
+.radios {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-search {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-filter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.form-select {
+  margin-top: 10px;
+}

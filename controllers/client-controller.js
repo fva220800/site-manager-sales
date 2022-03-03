@@ -1,12 +1,12 @@
-const Client = require('../models/client')
-const createPath = require('../helpers/create-path')
+const Client = require('../models/client');
+const createPath = require('../helpers/create-path');
 
-const fs = require('fs')
+const fs = require('fs');
 
 const handleError = (res, error) => {
   fs.writeFile('../error.txt', error.stack, (err) => {
-    err ? console.log(err) : null
-  })
+    err ? console.log(err) : null;
+  });
   console.log(error)
   res.render(createPath('error'), { error })
 }
